@@ -1,5 +1,11 @@
+"""
+A simple XML parser!
+"""
 class XML:
     def __init__(self, xml_file: str) -> None:
+        """
+        Main XML class
+        """
         from importlib import metadata as pypi
         import xml.etree.ElementTree as ET
         import subprocess
@@ -23,6 +29,23 @@ class XML:
             logging.error(f"Failed to install hxml package: {e}")
 
     def get_root_item(self, item: str):
+        """
+        Get the data in the specified root item.
+        Syntax:
+        ```xml
+        <?xml version="1.0" encoding="UTF-8"?>
+        <app>
+            <name>My App</name>
+            <version>1.2.3</version>
+        </app>
+        ```
+        ```py
+        from hxml import XML
+
+        conf = XML('test.xml').get_root_item('app') # {'name': 'My App', 'version': '1.2.3'}
+
+        print(conf['name']) # Output: My App
+        """
         import hollos_get_data_recursive
         root_element_name = self.root.tag
         if item != root_element_name:
