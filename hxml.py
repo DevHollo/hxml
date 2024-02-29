@@ -33,6 +33,7 @@ class XML:
         Get the data in the specified root item.
         Syntax:
         ```xml
+        <!-- test.xml -->
         <?xml version="1.0" encoding="UTF-8"?>
         <app>
             <name>My App</name>
@@ -40,6 +41,7 @@ class XML:
         </app>
         ```
         ```py
+        # app.py
         from hxml import XML
 
         conf = XML('test.xml').get_root_item('app') # {'name': 'My App', 'version': '1.2.3'}
